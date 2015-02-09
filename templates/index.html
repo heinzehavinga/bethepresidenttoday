@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>President for a day</title>
+
+  <base href="/" />
+    <script src="//use.typekit.net/agh3jgw.js"></script>
+   <script>try{Typekit.load();}catch(e){}</script>
+  {% include 'stylesheets.html' %}
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+	
+  <div>
+	<div class="col-sm-2 sidebar timeline">
+		<img src="static/styles/img/AZGame-Logo.png" ng-click="startNewGame()" />
+            <div ng-repeat="question in questions">
+              <div>
+                  <span ng-class="{active: $index==activequestion}">Datum!</span>
+              </div>
+            </div>
+        </div>
+
+<div class="col-sm-12 slidecontainer" id="slidecontainer">
+  
+<div ng-repeat="question in questions">
+  <div class="question">
+
+      <div class="questionslide slides" id="question{[{$index}]}" style='background-image:url("{[{ question.background_media_url }]}")'>
+        <div class="container">
+
+                <div class="col-sm-8 col-md-offset-2 problemcontainer"> 
+
+
+                  <h1>{[{ question.name}]}</h1>
+                  <p class="problemtext">
+                    {[{ question.text}]}
+                  </p>
+                </div>
+
+                <div ng-repeat="choice in question.choices" class="choices">
+                	
+                  <button ng-click="chooseAnswer($index)" class="answerbutton">
+                      {[{ choice.text }]}
+                  </button>
+              
+                </div>      
+              </div>
+            </div>
+
+    <div class="anwserslide slides" id="answer{[{$index}]}" style="background-image:url('{[{ question.actual_result_media_url }]}')">
+        <div class="tweetcontainer col-sm-4 col-md-offset-4">
+        	<div class="col-sm-2"><img class="twimage" src="static/styles/img/twphoto.png" /></div>
+        	<div class="col-sm-8">
+				<h2 class="tweettitle">Aliyev tweets:</h2>
+				<p class="tweettext">{[{ question.tweet}]}</p>
+        	</div>
+        	<div class="col-sm-2">
+        		<a href="{[{ question.tweet_link}]}" target="_blank"><img class="twimage" src="static/styles/img/icons/AZ-Icons-Twitter.png" width="50%" /><br />Source</a>
+        	</div>
+        </div>
+        <div class="container">
+          <div class="choicescontainer">
+            <br />
+            <br />
+            <br />
+          <div class="col-sm-4 col-md-offset-2 yourchoice"> 
+            <h2>Your choice</h2>
+            <p >
+              {[{ choosen.resultText }]}
+            </p>
+          </div>
+          <div class="col-sm-5 realchoice"> 
+              <h3>So what actually happend</h3>
+              <h2>{[{ question.actual_result_title}]}</h2>
+               <p>{[{ question.actual_result}]}
+               <br />
+          <br />
+          <br /></p>
+          </div>
+
+      </div>
+          <br />
+          <br />
+    </div>
+          <div class="col-sm-4 col-md-offset-4 continuecontainer">
+               <button class="continuebutton" ng-click="loadNextQuestion(true)">
+                      Let's rule more!
+                  </button>
+               
+          </div>
+        
+    </div>
+
+  </div>
+</div>
+</div>
+<div class="col-sm-2 col-md-2 sidebar vizbar">
+  <div class="col-sm-8 col-md-8 col-sm-offset-4">
+  <div class="scoreblock {[{scoreAColor}]}">
+    <img width="25%" style="padding-top:20px"src="static/styles/img/icons/AZ-Icons-Games.png" />
+  	<p class="percentage">{[{ scoreA }]}%</p>
+    <p class="scoreLabel">Successful games</p>
+  </div>
+  <div class="scoreblock {[{scoreBColor}]}">
+    <img width="25%" style="padding-top:20px"src="static/styles/img/icons/AZ-Icons-family-power.png" />
+  	<p class="percentage">{[{ scoreB }]}%</p>
+  	<p class="scoreLabel">Family power</p>
+  </div>
+  <div class="scoreblock {[{scoreCColor}]}">
+    <img width="25%" style="padding-top:20px"src="static/styles/img/icons/AZ-Icons-intl-standing.png" />
+  	<p class="percentage">{[{ scoreC }]}%</p>
+  	<p class="scoreLabel">International standing</p>
+  </div>
+  <div class="scoreblock {[{scoreDColor}]}">
+    <img width="25%" style="padding-top:20px"src="static/styles/img/icons/AZ-Icons-foreign.png" />
+	<p class="percentage">{[{ scoreD }]}%</p>
+  	<p class="scoreLabel">Foreign Investments</p>
+  </div>
+  <div class="scoreblock {[{scoreEColor}]}">
+    <img width="25%" style="padding-top:20px"src="static/styles/img/icons/AZ-Icons-HumanRights.png" />
+  	<p class="percentage">{[{ scoreE }]}%</p>
+  	<p class="scoreLabel">Human rights record</p>
+  </div>
+  <div class="scoreblock {[{scoreFColor}]}">
+  <img width="25%" style="padding-top:20px"src="static/styles/img/icons/AZ-Icons-Popularity.png" />
+  <p class="percentage">{[{ scoreF }]}%</p>
+  	<p class="scoreLabel">Domestic popularity</p>
+  <div>
+</div>
+</div>
+  </div>
+</div>
+
+  {% include 'javascripts.html' %}
+
+</body>
+</html>

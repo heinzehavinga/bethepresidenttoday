@@ -1,0 +1,14 @@
+{% load compress %}
+{% load staticfiles %}
+
+{% compress js %}
+<script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'bower_components/underscore/underscore.js' %}"></script>
+<script type="text/javascript" src="{% static 'bower_components/angular/angular.js' %}"></script>
+<script type="text/javascript" src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
+<script type="text/javascript" src="{% static 'bower_components/angular-cookies/angular-cookies.js' %}"></script>
+<script type="text/javascript" src="{% static 'bower_components/ngDialog/js/ngDialog.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bower_components/angular-scroll/angular-scroll.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'js/personController.js' %}"></script>
+{% endcompress %}
